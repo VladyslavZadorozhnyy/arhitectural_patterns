@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.mvvmexample.MainViewModel" />
+
+        <variable
+            name="addAction"
+            type="com.example.mvvmexample.MyIntent" />
+
+        <variable
+            name="resetAction"
+            type="com.example.mvvmexample.MyIntent" />
+
+        <variable
+            name="generateAction"
+            type="com.example.mvvmexample.MyIntent" />
+
+        <variable
+            name="generateMessageAction"
+            type="com.example.mvvmexample.MyIntent" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <Button
+            android:id="@+id/addValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add value"
+            android:onClick="@{() -> viewModel.handleIntent(addAction)}"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/resetValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reset value"
+            android:onClick="@{() -> viewModel.handleIntent(resetAction)}"
+            app:layout_constraintTop_toBottomOf="@id/addValue" />
+
+        <Button
+            android:id="@+id/generateValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Generate value"
+            android:onClick="@{() -> viewModel.handleIntent(generateAction)}"
+            app:layout_constraintTop_toBottomOf="@id/resetValue" />
+
+        <Button
+            android:id="@+id/generateMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Generate message"
+            android:onClick="@{() -> viewModel.handleIntent(generateMessageAction)}"
+            app:layout_constraintTop_toBottomOf="@id/generateValue" />
+
+        <TextView
+            android:id="@+id/contentView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Non set value yet"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/messageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Non set message yet"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contentView"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
